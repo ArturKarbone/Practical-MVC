@@ -1,0 +1,20 @@
+﻿@model WebApplication5.ViewModels.AddCard
+@{
+    ViewData["Title"] = "AddCard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AddCard</h2>
+
+
+<div class="container">
+    <div class="row">
+        <h2>Add Card</h2>
+        <form asp-action="AddCard" asp-controller="Board">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <label asp-for="Title"></label>
+            <input type="text" asp-for="Title" />
+            <button type="submit" class="btn">Add it!</button>
+        </form>
+    </div>
+</div>

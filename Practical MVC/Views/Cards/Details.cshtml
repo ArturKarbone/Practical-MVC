@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+@model Practical_MVC.ViewModels.CardDetails
+<h2>Details</h2>
+
+
+
+<div class="row">
+
+    <form asp-action="Update" asp-controller="Cards">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <label asp-for="Title"></label>
+        <input type="text" asp-for="Title" />
+        <label asp-for="Notes"></label>
+        <input type="text" asp-for="Notes" />
+        <input type="hidden" asp-for="Id" />
+
+        <select asp-for="ColumnId" asp-items="Model.AvailableColumns"></select>
+        
+       
+        <label asp-for="ColumnId">Column</label>
+
+        <button type="submit" class="btn">Save</button>
+        @TempData["Message"]
+    </form>
+
+    @if (TempData.ContainsKey("Message"))
+    {
+        <script type="text/javascript">
+            M.toast({ html: '@TempData["Message"]' }, 3000);
+        </script>
+    }
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems);
+        });
+    </script>
+</div>
